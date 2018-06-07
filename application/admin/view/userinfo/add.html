@@ -1,0 +1,66 @@
+{layout name="layout" /}
+
+<div class="breadcrumb">
+	<li><a href="" class='font'>首页</a></li>
+	<li><a href="" class='font'>用户管理</a></li>
+	<li><a href="" class='font'>查看用户</a></li>
+	<li class="pull-right"><a href=""><span class="glyphicon glyphicon-refresh"></span></a></li>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+	</div> 
+	<div class="panel-body">
+		<form action="" id=""  method="post"  enctype="multipart/form-data" >
+			<div class="form-group">
+				<label for="">用户名称</label>
+				<select name='userid' id='' class='form-control'>
+					
+					{volist name="user" id='bran'}
+
+					<option value="{$bran.id}">{$bran.username}</option>
+					
+					{/volist}
+				</select>
+				
+			</div>
+			<div class="form-group">
+				<label for="">图片</label>
+				<input type="file" class="form-control" name="img">
+			</div>
+			<div class="form-group">
+				<label for="">昵称</label>
+				<input type="text" class="form-control" name="petname">
+				
+			</div>
+			<div class="form-group">
+				<label for="">地址</label>
+				<input type="text" class="form-control" name="addr">
+				
+			</div>
+			<div class="form-group">
+				<label for="">电话</label>
+				<input type="text" class="form-control" name="tel">
+				
+			</div>
+		   <div class="form-group">
+				<label for="">电话</label>
+				<input type="text" class="form-control" name="name">
+				
+			</div>	
+			
+			<button class="btn btn-default" type="submit">提交</button>
+			<button type="reset" class="btn btn-default">重置</button>
+		</form>	
+	</div>
+	<div class="panel-footer">
+	</div>
+</div>
+
+<script>
+  
+</script>
+
+
+
+
+

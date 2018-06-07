@@ -1,0 +1,239 @@
+{layout name='layout'/}
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人中心</title>
+	<link rel='stylesheet' href='__STATIC__/index/css/index.css'>
+	<script src='__STATIC__/index/js/jquery.min.js'></script>
+</head>
+<body>
+	
+<!-- logo 搜索 cart -->
+	<div class='header'>
+		<div class='header_center'>
+			<h1 class='logo'>
+				<a href='{:url('Index/index')}' id='home'></a>
+			</h1>
+			<div class='header_searchbox header_out_searchbox'>
+				<form action='http://search.jumei.com' method='get'>
+					<input type='text' name='search' class='header_search_input' id='header_search_input'>
+					<button type='submit' class='header_search_btn'>搜索</button>
+				</form>
+				<div class='search_result_pop_a' id='top_out_search_pop_div'></div>
+			    <ul class='hot_word'>
+			    	<li><a href=''>保湿</a><s class='line'></s></li>
+			    	<li><a href=''>面膜</a><s class='line'></s></li>
+			    	<li><a href=''>洗面奶</a><s class='line'></s></li>
+			    	<li><a href=''>补水</a><s class='line'></s></li>
+			    	<li><a href=''>香水</a><s class='line'></s></li>
+			    	<li><a href=''>眼霜</a><s class='line'></s></li>
+			    	<li><a href=''>口红</a><s class='line'></s></li>
+			    	<li><a href=''>护肤套装</a><s class='line'></s></li>
+			    	<li><a href=''>BB霜</a></li>
+
+			    </ul>
+			</div>
+		    <div id='cart_box' class='cart_box'>
+		    	<a id='cart' class='cart_link' href=''>
+		    		<img src='__STATIC__/index/img/cart.gif' class='cart_gif'>
+		    		<span class='text'>去购物车结算</span>
+		    		<span class='num'></span>
+		    		<s class='icon_arrow_right'></s>
+		    	</a>
+		    </div>
+	    </div>
+	</div>
+<!-- 导航条 -->	
+	<div class='header_bottom'>
+		<div class='channel_nav_box'>
+			<div class='channel_nav_list_wrap'>
+				<ul class='channel_nav_list'>
+					<li class='currentn'>
+						<a href='' class='home'>首页</a>
+					</li>
+					<li>
+						<a href=''>极速免税店</a>
+					</li>
+					<li>
+						<a href=''>母婴特卖</a>
+					</li>
+					<li class='meizhuang'>
+						<a href='' class='mei'>美妆商城<s></s></a>
+						<!-- <div class='header_pop_subAtc box-shadow' id='header_pop_subAct'>
+					        <div class='mz_imglist'>
+								<a href=''><img src='__STATIC__/index/img/30573_254_135_003-web.jpg'></a>
+								<a href=''><img src='__STATIC__/index/img/30573_254_135_005-web.jpg'></a>	
+						
+					        </div>
+					        <div class='mz_inner clearfix'>
+								<dl class='mz1'>
+									<dt class='item_int png'><a>国际大牌</a></dt>
+									<dd><a href=''>兰蔻</a></dd>
+									<dd><a href=''>娇韵诗</a></dd>
+									<dd><a href=''>伊丽莎白雅顿</a></dd>
+									<dd><a href=''>雅诗兰黛</a></dd>
+									<dd><a href=''>欧莱雅</a></dd>
+									<dd><a href=''>兰芝</a></dd>
+									<dd><a href=''>倩碧</a></dd>
+									<dd><a href=''>SK-ll</a></dd>
+									<dd><a href=''>雅漾</a></dd>
+									<dd><a href=''>菲诗小铺</a></dd>
+									<dd><a href=''>悦诗风吟</a></dd>
+								</dl>
+								<dl>
+									<dt class='item_hufu png'><a>护肤</a></dt>
+									<dd><a href=''>洁面</a></dd>
+									<dd><a href=''>爽肤水</a></dd>
+									<dd><a href=''>精华</a></dd>
+									<dd><a href=''>乳液</a></dd>
+									<dd><a href=''>面霜</a></dd>
+									<dd><a href=''>眼霜</a></dd>
+									<dd><a href=''>面膜</a></dd>
+									<dd><a href=''>护肤套装</a></dd>
+									
+								</dl>
+								<dl>
+									<dt class='item_caizhuang png'><a>彩妆</a></dt>
+									<dd><a href=''>卸妆</a></dd>
+									<dd><a href=''>BB霜</a></dd>
+									<dd><a href=''>粉底液</a></dd>
+									<dd><a href=''>粉饼</a></dd>
+									<dd><a href=''>眼影</a></dd>
+									<dd><a href=''>眼线笔</a></dd>
+									<dd><a href=''>睫毛膏</a></dd>
+									<dd><a href=''>眉笔</a></dd>
+									<dd><a href=''>口红</a></dd>
+									<dd><a href=''>腮红</a></dd>
+									
+								</dl>
+								<dl class='mz4'>
+									<dt class='item_xiangfen png'><a>香氛</a></dt>
+									<dd><a href=''>女士香水</a></dd>
+									<dd><a href=''>男士香水</a></dd>
+									<dd><a href=''>中性香水</a></dd>
+									<dd><a href=''>Q版香水</a></dd>
+									<dd><a href=''>香水套装</a></dd>
+									<dd><a href=''>精油</a></dd>
+									
+								</dl>
+								<dl class='mz5'>
+									<dt class='item_nanshi png'><a>男士专区</a></dt>
+									<dd><a href=''>洁面</a></dd>
+									<dd><a href=''>爽肤水</a></dd>
+									<dd><a href=''>面霜</a></dd>
+									<dd><a href=''>精华</a></dd>
+									<dd><a href=''>护肤套装</a></dd>
+									<dd><a href=''>洗发</a></dd>
+									<dd><a href=''>沐浴</a></dd>
+									
+								</dl>
+								<dl class='mz6'>
+									<dt class='item_hot png'><a>热门搜索</a></dt>
+									<dd><a href=''>面膜贴</a></dd>
+									<dd><a href=''>洗面奶</a></dd>
+									<dd><a href=''>唇膏</a></dd>
+									<dd><a href=''>去黑头</a></dd>
+									<dd><a href=''>怯斑</a></dd>
+									<dd><a href=''>隔离</a></dd>
+									<dd><a href=''>祛痘</a></dd>
+									<dd><a href=''>去角质</a></dd>
+									<dd><a href=''>指甲油</a></dd>
+									
+								</dl>
+					        </div>
+				        </div> -->
+					</li>
+					<li>
+						<a href=''>国际轻奢</a>
+					</li>
+					<li>
+						<a href=''>服装运动</a>
+					</li>
+					<li>
+						<a href=''>鞋包配饰</a>
+					</li>
+				</ul>
+				
+			    <ul id='icon_wrap' class='icon_wrap'>
+			    	<li>
+			    		<a href=''><span></span></a>
+			    	</li>
+			    	<li>
+			    		<a href=''><span class='th'></span></a>
+			    	</li>
+			    	<li>
+			    		<a href=''><span class='by'></span></a>
+			    	</li>
+			    </ul>
+			</div>
+		</div>
+	</div>
+<!-- 内容 -->	
+    <div class="profile">
+     	<div class="nav">
+     		<div class="notice">
+     			{volist name='data' id='dat'}{/volist}
+     		{if condition="$data"}
+     			{if condition="$dat.img"}
+     			<a href='' class='img'><img src='__STATIC__/upload/user/{$dat.img}'></a>
+                {else/}  
+                <a href='' class='img'><img src='__STATIC__/index/img/284241596-64-15173983821.jpg'></a>  
+     			
+     			{/if}
+     		{else /}  
+	                 <a href='' class='img'><img src='__STATIC__/index/img/284241596-64-15173983821.jpg'></a> 
+             	 {/if}	
+     			
+     			<p class='nickname'>
+     				<a href=''>JM180BNEN9073</a>
+     			</p>
+     			<p class='nick'><a href=''>普通会员</a></p>
+     			<p class="uid">用户ID: 284241596</p>
+
+     		</div>
+     		<h2><b></b>我的聚美优品</h2>
+     		<a href="{:url('Person/index')}" class="list selected"><b></b>我的订单</a>
+     		<a href="{:url('Person/mycomm')}" class="wish"><b></b>评价晒单</a>
+     		<a href="{:url('Person/collect')}" class="fav"><b></b>我的收藏</a>
+     		<!-- <a href="{:url('Person/comment')}" class="fav"><b></b>我的评价</a> -->
+     		<a href="{:url('Person/order')}" class="fav"><b></b>订单详情</a>
+     		<h2><b></b>管理个人账户</h2>
+     		<a href="{:url('Person/add')}" class="addr"><b></b>管理收货地址</a>
+     		<a href="{:url('Person/uppass')}" class="bind"><b></b>修改密码</a>
+     		<a href="{:url('Person/mess')}" class="settings"><b></b>设置账户信息</a>
+     	</div>
+     	<h1 class='righta'>
+		    <a href="" target="_blank">手机客户端，随时随地查看物流详情</a>
+		    订单详情
+		</h1>
+		{volist name='fdata' id='fda'}
+        <div class="tabs-mod__tabs-panels___2HmCD">
+        	<dl class="address-memo-mod__an-box___y5ixN"><dt>收货地址：</dt>
+        		<dd >姓名：{$fda.name}</dd>
+        		<dd>电话：	{$fda.tel}</dd>
+        		<dd>地址：	{$fda.addr}000000</dd>
+        	</dl> 	
+        </div>
+	    {/volist}
+	    <div class="null_info">
+	        <h2>
+	            
+	        </h2>
+	    </div>
+	    <a href="javascript:;" class="backtotop" id='btn_gotop'><b></b>回到顶部</a>
+		
+	    <div class="clear"></div>	
+    </div>
+    
+</body>
+<script src='__STATIC__/index/js/index.js'></script>
+<script src='__STATIC__/index/js/setinterval.js'></script>
+ <script>
+
+ </script>
+</html>
+	
+
+    

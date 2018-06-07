@@ -1,0 +1,105 @@
+{layout name='layout'/}
+<div class="breadcrumb">
+	
+	<li><a href="" class='font'>分类管理</a></li>
+	
+	<li class="pull-right"><a href="" class='sx'><span class="glyphicon glyphicon-refresh"></span></a></li>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<button class='btn btn-danger' onclick="delAll()">
+			<span class='glyphicon glyphicon-trash'></span>批量删除
+		</button>
+		<a class="btn btn-primary" href="{:url('add')}"><span class="glyphicon glyphicon-plus"></span>添加分类</a>
+		<div class="pull-right" style="margin-top:5px;margin-left: 33px;">共有<span id="tot" class='sj'>{$tot}</span>条数据</div>
+		<form action="" class="form-inline pull-right">
+			<input type="text" class="form-control" name="search">
+			<button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search">搜索</span></button>
+		</form> 
+	</div>
+	<div class="panel-body userIndexMain">
+		<table class='table table-hover table-striped  user'>
+			<tr>
+				<th><input type="checkbox" name="checkAll" id="checkAll">编号</th>
+
+				<th>分类名称</th>
+				
+				<th>功效</th>
+				<th>父编号</th>
+                
+				<th>修改</th>
+				<th>删除</th>
+			</tr>
+			{volist name='data' id='dat'}
+			<tr id="tr{$dat.id}" class='cls{$dat.level}'>
+				<td><input type="checkbox" name="id" class="check" value="{$dat.id}">{$dat.id}</td>
+				<td><?php echo str_repeat('—',$dat['level'])?><?php echo mb_substr($dat['cname'],0,10,'utf-8'); ?>.....</td>
+				
+				
+				<td><?php echo mb_substr($dat['effect'],0,10,'utf-8'); ?>.....</td>
+
+                <td>{$dat.pid}</td>
+				<td><a href='{:url('update',array('id'=>$dat.id))}' class='update'>修改</a></td>
+				<td><a href='{:url('del',array('id'=>$dat.id))}' class='del btn btn-sm' >删除</a></td>
+
+			</tr>
+			{/volist}
+		</table>
+		
+				
+	</div>
+    <div class="panel-footer">
+    	
+    </div>
+</div>
+
+
+
+
+<script>
+// 批量选择
+ $('#checkAll').click(function(){
+ 	$('.check').click();
+ });
+
+function delAll(){
+	datas=$('.check:checked');
+	arr=new Array();
+	for(i=0;i<datas.length;i++){
+		arr[i]=datas.eq(i).val();
+	}
+	// 转字符串
+	str=arr.join(',',arr);
+	$.post('{:url("ajax_delAll")}',{str:str},function(data){
+		if(arr.length==data){
+			for(i=0;i<datas.length;i++){
+				$('#tr'+arr[i]).remove();
+				tot=parseInt($('#tot').html());
+				    $('#tot').html(--tot);
+			}
+		}
+	})
+}
+
+
+// $('.cls0').click(function(){
+
+// 	id=$(this).attr('id');
+// 	$.post("{:url('ajax_s')}",{id:id},function(data){
+// 		for(i=0;i<data.length;i++){
+// 			$('#'+data[i]).toggle();
+
+// 		}
+// 	})
+// });
+
+$('.cls0').click(function(){
+	id=$(this).attr('id');
+	$.post('{:url("ajax_s")}',{id:id},function(data){
+		
+		for(i=0;i<data.length;i++){
+			$('#'+data[i]).toggle();
+		}
+	});
+})
+</script>

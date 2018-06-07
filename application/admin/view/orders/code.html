@@ -1,0 +1,53 @@
+{layout name="layout" /}
+
+<div class="breadcrumb">
+	<li><a href="" class='font'>首页</a></li>
+	<li><a href="" class='font'>商品管理</a></li>
+	<li><a href="" class='font'>查看商品</a></li>
+	<li class="pull-right"><a href=""><span class="glyphicon glyphicon-refresh"></span></a></li>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+	</div> 
+	<div class="panel-body">
+		<table class="table  userIndexTable table-bordered">
+			<tr>
+				<th>编号 </th>
+
+				<th>名称 </th>
+				<th>图片</th>
+				<th>价格</th>
+				<th>数量</th>
+				<th>合计</th>
+
+				
+			</tr>
+			{volist name='data' id='dat'}
+			<tr code="tr{$dat.ordernum}">
+				<td>{$dat.ordernum}</td>
+                
+				<td>{$dat.sname}</td>
+			
+				<td><img src="__STATIC__/upload/shop/{$dat.simg}" alt="" height="50px" width="120px"></td>
+				<td>{$dat.price}</td>
+				<td>{$dat.num}</td>
+				<td>{$dat.price*$dat.num}元</td>
+				
+				
+              </tr>  
+			{/volist}
+            <a href="{:url('index')}" class='update'>返回</a>
+		</table>
+	</div>
+	<div class="panel-footer">
+	</div>
+</div>
+
+<script>
+  
+</script>
+
+
+
+
+

@@ -1,0 +1,70 @@
+{volist name='arr' id='data'}
+<div class="input_container">
+	<label for="recipient_name">
+		<span class="spark">*</span>收件人姓名：
+	</label>
+	<input type="text"  class="t_input recipient_name auth" id="recipient_name" name="name" value="{$data.name}">
+	<div class="focus_text"style="display:none;">
+		<p class="default" >请输入姓名</p>
+	</div>
+	<div class="invalid"style="display:none;">
+        <i></i>
+        <div class="msg">姓名不能为空</div>
+    </div>
+</div>
+<div class="input_container">
+	<label for="select_province">
+		<span class="spark">*</span>收货地址：
+	</label>
+	<p>
+		
+		<select class='select_text_ui' name="pid" id="aprovince">
+			<option value="{$data.addr}"><a href=''>省/直辖市</a></option>
+			
+			 
+			 
+			 {volist name="sdata" id='dat'}
+			 
+			 <option value="{$dat.ProvinceID}">{$dat.ProvinceName}</option>
+			 {/volist}
+		</select>
+		
+		<select class='select_text_ui' name="cid" id="acity">
+			<option   value="{$data.addr}"><a href=''>市</a></option>
+			
+		</select>
+		
+		<select class='select_text_ui' name="qid" id="adistrict">
+			<option value="{$data.addr}">区/县</option>
+		</select>
+	</p>
+</div>
+<div class="input_container">
+	<label for="recipient_street">
+		<span class="spark">*</span>详细地址：
+	</label>
+	<textarea rows="3" cols="60" class="t_input recipient_street auth"  id="recipient_street" name="addx" value="{$data.addr}"></textarea>
+	<div class="focus_text"style="display:none;padding-left:133px;">请填写详细的地址</div>
+	<div class="invalid"style="display:none;padding-left:133px;">
+        <i></i>
+        <div class="msg">详细地址不能为空</div>
+    </div>
+</div>
+<div class="input_container">
+	<label for="recipient_hp">
+		<span class="spark">*</span>手机号码：
+	</label>
+	<input type="tel"  class="t_input recipient_hp auth" id="recipient_hp" name="tel" value="{$data.tel}" maxlength="11">
+	<div class="focus_text"style="display:none;">请输入11位手机号</div>
+	<div class="invalid"style="display:none;">
+        <i></i>
+        <div class="msg">手机号格式有误</div>
+    </div>
+</div>
+<input type="hidden" name="id"  value="{$data.id}">
+<input type="hidden" name="userid" value="{$data.userid}">
+<div class="act">
+	<input type="submit" onclick="edit({$data.id})" value="保存收货地址"  id="shipping_address_submit" class="formbutton">
+</div>
+{/volist}
+

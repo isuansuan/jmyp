@@ -1,0 +1,122 @@
+{layout name="layout" /}
+<div class="breadcrumb">
+
+	<li><a href="" class='font'>商品管理</a></li>
+	
+	<li class="pull-right"><a href=""><span class="glyphicon glyphicon-refresh"></span></a></li>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<button class="btn btn-danger" onclick="delAll()"><span class="glyphicon glyphicon-trash"></span>批量删除</button>
+		<a class="btn btn-primary" href="{:url('add')}"><span class="glyphicon glyphicon-plus"></span>添加商品</a>
+		<div class="pull-right" style="margin-top:5px;margin-left: 25px;">共有<b id="tot" class='sj'>{$tot}</b>条数据</div>
+		<form action="" class="form-inline pull-right">
+			<input type="text" class="form-control" name="search">
+			<button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search">搜索</span></button>
+		</form> 
+	</div> 
+	<div class="panel-body">
+		<table class="table userIndexTable table-bordered">
+			<tr>
+				<th><input type="checkbox" name="checkAll" id="checkAll">编号 </th>
+				<th>商品名称</th>
+				<th>图片</th>
+				<th>价格</th>
+				<th>库存</th>
+				<th>货架</th>
+				<th>销量</th>
+				<th>访问量</th>
+				<th>访问时间</th>
+                
+				<th>描述</th>
+				<th>详情</th>
+				<th>品牌名称</th>
+				<th>分类名称</th>
+                <th>修改</th>
+				<th>删除</th>
+				
+
+			</tr>
+			{volist name='data' id='dat'}
+			<tr id="tr{$dat.id}">
+				<th><input type="checkbox" name="id" class="check" value="{$dat.id}">{$dat.id} </th>
+				<th><?php echo mb_substr($dat['sname'],0,8,'utf-8'); ?>..</th>
+				<th><img src="__STATIC__/upload/shop/{$dat.simg}" alt="" height="50px" width="120px"></th>
+				<th>{$dat.price}</th>
+				<th>{$dat.stock}</th>
+				<th>
+					{if condition="$dat.shelf eq '0'"}
+					<a href="javascript:;" class="btn btn-danger" onclick="shelf(this,{$dat.id},{$dat.shelf})">下架</a>
+					{else /}
+					<a href="javascript:;" class="btn btn-info" onclick="shelf(this,{$dat.id},{$dat.shelf})">上架</a>
+					{/if}
+					
+				</th>
+				<th>{$dat.sales}</th>
+				<th>{$dat.visit}</th>
+                <td>{$dat.visittime==0?'从未访问':date("Y-m-d H:i:s",$dat.visittime)}</td>
+				<th><?php echo mb_substr($dat['contact'],0,5,'utf-8'); ?>.....</th>
+				<th><a href="{:url('detail',array('id'=>$dat.id))}">点击查看详情</a></th>
+				<th>{$dat.bname}</th>
+				<th>{$dat.cname}</th>
+
+                <td><a href='{:url('update',array('id'=>$dat.id))}' class='update'>修改</a></td>
+				<td><a href='{:url('del',array('id'=>$dat.id))}' class='del btn btn-sm' >删除</a></td>
+
+                
+			</tr>
+			{/volist}
+		</table>
+	</div>
+	<div class="panel-footer">
+		{$page}
+	</div>
+</div>
+<script>
+// 货架
+function shelf(obj,id,val){
+	if(val){
+		$.post("{:url('ajax_shelf')}",{id:id,shelf:0},function(data){
+			if(data){
+				$(obj).html('下架');
+				$(obj).attr({'class':'btn btn-danger'});
+				$(obj).attr({'onclick':'shelf(this,'+id+',0)'});
+			}
+		})
+	}else{
+		$.post("{:url('ajax_shelf')}",{id:id,shelf:1},function(data){
+			if(data){
+				$(obj).html('上架');
+				$(obj).attr({'class':'btn btn-info'});
+				$(obj).attr({'onclick':'shelf(this,'+id+',1)'});
+			}
+		})
+	}
+}
+// 批量选择
+ $('#checkAll').click(function(){
+ 	$('.check').click();
+ });
+
+function delAll(){
+	datas=$('.check:checked');
+	arr=new Array();
+	for(i=0;i<datas.length;i++){
+		arr[i]=datas.eq(i).val();
+	}
+	// 转字符串
+	str=arr.join(',',arr);
+	$.post('{:url("ajax_delAll")}',{str:str},function(data){
+		if(arr.length==data){
+			for(i=0;i<datas.length;i++){
+				$('#tr'+arr[i]).remove();
+				tot=parseInt($('#tot').html());
+				  $('#tot').html(--tot);
+			}
+		}
+	})
+}
+</script>
+
+
+

@@ -1,0 +1,35 @@
+<div class="form-group">
+	<label for="">用户名称</label>
+	<input type="text" class="form-control" name="username" value="{$data.username}">
+</div>
+<div class="form-group">
+	<label for="">用户密码</label>
+	<input type="text" class="form-control" name="password" value="{$data.password}">
+</div>
+
+
+
+
+
+<div class="form-group">
+	<div class="radio">
+
+		<label>
+			<input type="radio" name="status" id="" value="1" {$data.status=='1'?'checked':''}>
+			正常
+		</label>
+	</div>
+	<div class="radio">
+		<label>
+			<input type="radio" name="status" id="" value="0" {$data.status=='0'?'checked':''}>
+			禁用
+		</label>
+		<input type="hidden" name="id" value="{$data.id}">
+	</div>
+</div>
+
+
+<button class='btn btn-info' onclick="edit({$data.id})">提交</button>
+<button type="reset" class='btn btn-danger' data-dismiss='modal'>重置</button>
+
+

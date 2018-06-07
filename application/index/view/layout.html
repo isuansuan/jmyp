@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+	
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="聚美优品是国内知名正品女性团购网站,也是领先的品牌化妆品团购和护肤品团购网,聚美优品团购化妆品每天有超值的化妆品和护肤品团购信息,详情登陆聚美优品官网：jumei.com。"/>
+	<meta name="keywords" content="聚美优品,化妆品团购,今日团购,化妆品防伪,化妆品验真,真品联盟"/>
+	<title>聚美优品</title>
+	<link rel='stylesheet' href='__STATIC__/index/css/index.css'>
+	<script src='__STATIC__/index/js/jquery.min.js'></script>
+	
+	
+</head>
+
+<body>
+	<div class='headerTop'>
+		<div class='headerTopBox'>
+			<ul class='header_top_left' id='headerTopLeft'>
+				<li>欢迎来到聚美！</li>
+			    
+
+				<li><a href='{:url('Resig/index')}'>快速注册</li>
+			    {if condition="session('username')"}
+                   <li><a href='{:url('Login/index')}' style="color:red">{$Think.session.username}</a></li>	
+					<span class='tpl-header-list-user-ico'><a href='{:url('login/logout')}'>[退出]</a></span>
+					</a>
+			    {else/}
+                   <li><a href='{:url('Login/index')}'>请登录</a></li>
+			    {/if}	
+					
+				
+					
+				
+				
+			
+				
+			</ul>
+			<ul class='header_top_right' id='headerTopRight'>
+				<li><a hsref=''>正品保证</a></li>
+				<li><a href=''>订单查询</a></li>
+				<li><a href=''><s class='icon_favorite'></s>收藏的品牌</a></li>
+			    <li class='item_ijumei'>
+			    	<a href='{:url('Person/index')}'>我的聚美<s class='icon_arrow_down'></s></a>
+			    	<div class='sub_nav sub_nav1'>
+			    		<ul>
+			    			<li><a href=''>我的订单</a></li>
+			    			<li><a href=''>我的现金券</a></li>
+			    			<li><a href=''>我的红包</a></li>
+			    			<li><a href=''>我的余额</a></li>
+			    			<li><a href=''>我的提现退款</a></li>
+			    			<li><a href=''>我的收藏</a></li>
+			    			<li><a href=''>我的心愿单</a></li>
+			    			<li><a href=''>会员中心</a></li>
+			    			<li><a href=''>礼品卡兑换</a></li>
+			    		</ul>
+			    	</div>
+			    </li>
+			    <li class='item_mobile'>
+			    	<a href=''>
+			    		<span class='line'></span>
+			    		<s class='icon_mobile'></s>手机聚美
+			    	</a>
+			    </li>
+			    <li id='see_more'>
+			    	<span class='line'></span>
+			    </li>
+			    <li class='item_more'>
+			    	<a href=''>更多<s class='icon_arrow icon_arrow_down'></s></a>
+			        <div class='sub_nav sub_nav2'>
+			        	<ul>
+			        		<li><a href=''>邀请好友</a></li>
+			        		<li><a href=''>加入收藏</a></li>
+			        		<li><a href=''>新浪微博</a></li>
+			        		<li><a href=''>聚美微信</a></li>
+			        		<li><a href=''>百度贴吧</a></li>
+			        		<li><a href=''>腾讯微博</a></li>
+			        		<li><a href=''>人人公众主页</a></li>
+			        	</ul>
+			        </div>
+			    </li>
+			</ul>
+		</div>
+	</div>
+	{__CONTENT__}
+	<div class='footer' id='footer'>
+ 		<div class='footer_textarea'>
+ 			<div class='footer_top'>
+ 				<div class='footer_con footer_credit'>
+ 					<a href='' class='foot_link mostmall'>
+ 						<span class='first corn'></span>
+ 						<span class='con'><b>值得信赖美妆电商</b></span>四千万用户信赖
+ 					</a>
+ 					<a href='' class='foot_link quality'>
+ 						<span class='first corn'></span>
+ 						<span class='con'><b>成功在美上市</b></span>股票代码NYSE:JMEI
+ 					</a>
+ 					<a href='' class='foot_link back'>
+ 						<span class='first corn'></span>
+ 						<span class='con'><b>品牌防伪码</b></span>支持品牌官网验真
+ 					</a>
+ 					<a href='' class='foot_link depot'>
+ 						<span class='first corn'></span>
+ 						<span class='con'><b>30天无理由退货</b></span>只要不满意无理由退货
+ 					</a>
+ 					<a href='' class='foot_link consignment'>
+ 						<span class='first corn'></span>
+ 						<span class='con'><b>百万用户口碑</b></span>帮你选对的
+ 					</a>
+ 					<a href='' class='foot_link packaging'>
+ 						<span class='first corn'></span>
+ 						<span class='con'><b>订单闪电发货</b></span>1.5小时订单极速出库
+ 					</a>
+ 					<a href='' class='foot_link confide'>
+ 						<span class='first corn'></span>
+ 						<span class='con'><b>大牌明星热荐</b></span>打造精致明星脸
+ 					</a>
+ 				</div>
+ 			</div>
+ 			<div class='footer_top_sen'>
+ 				<div class='footer_con footer_links'>
+ 					<ul class='linksa'>
+ 						<li class='links'>服务保障</li>
+ 						<li><a href=''>正牌真品防伪码</a></li>
+ 						<li><a href=''>正品保障</a></li>
+ 						<li><a href=''>30天无条件退货</a></li>
+ 						<li><a href=''>7×24小时客服服务</a></li>
+ 					</ul>
+ 					<ul class='linksb'>
+ 						<li class='links'>使用帮助</li>
+ 						<li><a href=''>新手指南</a></li>
+ 						<li><a href=''>常见问题</a></li>
+ 						<li><a href=''>帮助中心</a></li>
+ 						<li><a href=''>用户协议</a></li>
+ 					</ul>
+ 					<ul class='linksc'>
+ 						<li class='links'>支付方式</li>
+ 						<li><a href='' class='zhifu'>货到付款</a></li>
+ 						<li><a href=''>在线支付</a></li>
+ 						<li><a href=''>余额支付</a></li>
+ 						<li><a href=''>现金券支付</a></li>
+ 					</ul>
+ 					<ul class='linksd'>
+ 						<li class='links'>配送方式</li>
+ 						<li><a href=''>包邮政策</a></li>
+ 						<li><a href=''>配送说明</a></li>
+ 						<li><a href=''>运费说明</a></li>
+ 						<li><a href=''>验货签收</a></li>
+ 					</ul>
+ 					<ul class='linkse'>
+ 						<li class='links'>售后服务</li>
+ 						<li><a href=''>正品承诺</a></li>
+ 						<li><a href=''>售后咨询</a></li>
+ 						<li><a href=''>退货政策</a></li>
+ 						<li><a href=''>退货办理</a></li>
+ 					</ul>
+ 					<div class='links_er_box'>
+ 						<ul class="linksf">
+                           <li class="links">手机聚美</li>
+                           <li><span class="link_bottom_pic"></span></li>
+                           <li>下载移动客户端</li>
+                        </ul>
+                        <ul class="linksg">
+	                        <li class="links">聚美微信</li>
+	                        <li><span class="link_bottom_pic"></span></li>
+	                        <li>聚美官方微信</li>
+                        </ul>
+ 					</div>
+ 				</div>
+ 			</div>
+ 			<div class='footer_dy'>
+ 				<div class="play_box"><span class="play"></span></div>
+ 			</div>
+ 			<div class='footer_center'>
+ 				<div class='footer_con'>
+ 					<a href=''>关于聚美优品</a>
+ 					<a href=''>INVESTOR RELATIONS</a>
+ 					<a href=''>合作招商</a>
+ 					<a href=''>获取更新</a>
+ 					<a href=''>加入聚美</a>
+ 					<a href=''>品牌合作专区</a>
+ 					<a href=''>网站联盟</a>
+ 					<a href=''>媒体报道</a>
+ 					<a href=''>商务合作</a>
+ 				</div>
+ 			</div>
+ 			<div class="footer_copyright">
+ 				<div class="footer_con">
+ 					<p class="footer_copy_con">
+                    COPYRIGHT © 2010-2018 北京创锐文化传媒有限公司 JUMEI.COM 保留一切权利。
+                    客服热线：400-123-8888
+                    <br>
+                    京公网安备 11010102001226 | <a href="http://www.miibeian.gov.cn" target="_blank" rel="nofollow">京ICP证111033号</a> | <a href="http://f0.jmstatic.com/btstatic/pc_static/food_pic.jpg">食品经营许可证</a>
+                    | <a href="http://mp5.jmstatic.com/mobile/pc/chuangrui.jpg" target="_blank" rel="nofollow">营业执照</a> | <a href="http://mp5.jmstatic.com/mobile/pc/ICP.jpg" target="_blank" rel="nofollow">ICP许可证</a> | <a href="http://mp5.jmstatic.com/mobile/pc/chuban.jpg" target="_blank" rel="nofollow">出版物经营许可证</a>
+                </p>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+</body>
+<script src='__STATIC__/index/js/header.js'></script>
+<script src='__STATIC__/index/js/index.js'></script>
+</html>

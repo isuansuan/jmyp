@@ -1,0 +1,8 @@
+<td style="border: 1px solid #eee;">{$ata.name}</td>
+<td style="border: 1px solid #eee;">{$ata.addr}</td>
+<td style="border: 1px solid #eee;">{$ata.tel}</td>
+
+<td style="border: 1px solid #eee;">
+	<a class="sp_address_edit" id="update" href="javascript:void(0)" onclick='find({$ata.id})' style="background:#ed145b;padding:5px 8px;color:#fff;">修改</a> &nbsp; 
+	<a class="sp_address_delete"  onclick='return confirm(\"您确定删除吗\")' href="del({$ata.id},this)"style="background:#32a5e7;padding:5px 8px;color:#fff;">删除</a>
+</td>

@@ -1,0 +1,35 @@
+<td><input type="checkbox" name="id" class="check" value="{$dat.id}">{$dat.id} </td>
+<td>{$dat.username}</td>
+<td>{$dat.lastlogin==0?'从未登录':date("Y-m-d H:i:s",$dat.lastlogin)}</td>
+<td>{$dat.num}</td>
+<td>
+	{if condition="$dat.status eq '0'"}
+	<a href="javascript:;" class="btn btn-danger">禁用</a>
+	{else /}
+	<a href="javascript:;" class="btn btn-rimary">正常</a>
+	{/if}
+</td>
+
+
+<td><a href='javascript:;' class='update' data-toggle="modal" data-target="#edit" onclick="find({$dat.id})">修改</a></td>
+<td><a href="javascript:;" class='del btn btn-sm' onclick="del({$dat.id},this)">删除</a></td>
+
+<!-- <td><a href='javascript:;' data-toggle="modal" data-target="#mymodal"  class='del btn btn-sm'  >删除</a></td> -->
+
+<div class="modal fade" id='mymodal'>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class='close' data-dismiss='modal'>&times;</button>
+				<h4 class='modal-title'>友情提示:</h4>
+			</div>
+			<div class="modal-body">
+				<span>您确定删除吗？</span>
+			</div>
+			<div class="modal-footer">
+				<button class='btn btn-info' onclick="del({$dat.id},this)">确认</button>
+				<button class='btn btn-danger' data-dismiss='modal'>取消</button>
+			</div>
+		</div>
+	</div>			
+</div>

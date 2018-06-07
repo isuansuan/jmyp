@@ -1,0 +1,12 @@
+<div class="modal-header">
+	<button class='close' data-dismiss='modal'>&times;</button>
+	<h4 class='modal-title'>友情提示:</h4>
+</div>
+<div class="modal-body">
+	<span>您确定删除吗？</span>
+</div>
+<input type="hidden" name="id" value="{$data.id}">
+<div class="modal-footer">
+	<button class='btn btn-info' onclick="del({$data.id})">确认</button>
+	<button class='btn btn-danger' data-dismiss='modal'>取消</button>
+</div>

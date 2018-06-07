@@ -1,0 +1,79 @@
+{layout name="layout" /}
+<div class="breadcrumb">
+	
+	<li><a href="" class='font'>我的收藏</a></li>
+	
+	<li class="pull-right"><a href=""><span class="glyphicon glyphicon-refresh"></span></a></li>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<button class="btn btn-danger" onclick="delAll()"><span class="glyphicon glyphicon-trash"></span>批量删除</button>
+		<!-- <a class="btn btn-primary" href="{:url('add')}" ><span class="glyphicon glyphicon-plus"></span>添加收藏</a> -->
+		<!-- data-toggle="modal" data-target="#add" -->
+		<div class="pull-right" style="margin-top:5px;margin-left: 25px;">共有<b id="tot">{$tot}</b>条数据</div>
+		<form action="" class="form-inline pull-right">
+			<input type="text" class="form-control" name="search">
+			<button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search">搜索</span></button>
+		</form> 
+	</div> 
+	<div class="panel-body">
+		<table class="table userIndexTable table-bordered">
+			<tr>
+				<th><input type="checkbox" name="checkAll" id="checkAll">编号 </th>
+				
+				<th>用户民</th>
+				<th>商品名</th>
+
+				<th>图片</th>
+			    
+				
+			    	
+				
+			</tr>
+		    {volist name="data" id="dat"}
+			<tr id="tr{$dat.id}">
+
+				<td><input type="checkbox" name="id" class="check" value="{$dat.id}">{$dat.id}</td>
+				<td>{$dat.username}</td>
+				<td><?php echo mb_substr($dat['sname'],0,8,'utf-8'); ?>..</td>
+
+			   <td><img src="__STATIC__/upload/shop/{$dat.simg}" alt="" height="50px" width="120px"></td>
+			   
+			 
+			 </tr>	
+			 {/volist}
+		</table>
+	</div>
+	<div class="panel-footer">
+		{$page}
+	</div>
+</div>
+
+<script>
+// 批量选择
+ $('#checkAll').click(function(){
+ 	$('.check').click();
+ });
+
+function delAll(){
+	datas=$('.check:checked');
+	arr=new Array();
+	for(i=0;i<datas.length;i++){
+		arr[i]=datas.eq(i).val();
+	}
+	// 转字符串
+	str=arr.join(',',arr);
+	$.post('{:url("ajax_delAll")}',{str:str},function(data){
+		if(arr.length==data){
+			for(i=0;i<datas.length;i++){
+				$('#tr'+arr[i]).remove();
+				tot=parseInt($('#tot').html());
+				  $('#tot').html(--tot);
+			}
+		}
+	})
+}
+</script>
+
+
+

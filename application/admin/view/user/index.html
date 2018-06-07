@@ -1,0 +1,278 @@
+{layout name='layout'/}
+<script src="__STATIC__/public/up/jquery.uploadify.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="__STATIC__/public/up/uploadify.css">
+<div class="breadcrumb">
+	
+	<li><a href="" class='font'>用户管理</a></li>
+	
+	<li class="pull-right"><a href="" class='sx'><span class="glyphicon glyphicon-refresh"></span></a></li>
+	
+
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<button class='btn btn-danger' onclick="delAll()">
+			<span class='glyphicon glyphicon-trash'></span>批量删除
+		</button>
+		<button class="btn btn-primary" data-toggle="modal" data-target="#add"><span class="glyphicon glyphicon-plus"></span>添加用户</button>
+		<div class="pull-right" style="margin-top:5px;margin-left: 33px;">共有<span id="tot" class='sj'>{$tot}</span>条数据</div>
+		<form action="" class="form-inline pull-right">
+			<input type="text" class="form-control" name="search">
+			<button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-search">搜索</span></button>
+		</form> 
+	</div>
+	<div class="panel-body userIndexMain">
+		<table class='table table-hover table-striped userIndexTable'>
+			<tr>
+				<th><input type="checkbox" name="checkAll" id="checkAll">编号</th>
+
+				<th>用户名</th>
+				
+
+				<th>最后一次登录时间</th>
+				<th>登录次数</th>
+                <th>状态</th>
+				<th>修改</th>
+				<th>删除</th>
+			</tr>
+			{volist name='data' id='dat'}	
+			
+			<tr id="tr{$dat.id}">
+
+				<td><input type="checkbox" name="id" class="check" value="{$dat.id}">{$dat.id}</td>
+				<td>{$dat.username}</td>
+				
+
+				<td>{$dat.lastlogin==0?'从未登录':date("Y-m-d H:i:s",$dat.lastlogin)}</td>
+				<td>{$dat.num}</td>
+				<td>
+					{if condition="$dat.status eq '0'"}
+					<a href="javascript:;" class="btn btn-danger" onclick="status(this,{$dat.id},{$dat.status})">禁用</a>
+					{else /}
+					<a href="javascript:;" class="btn btn-rimary" onclick="status(this,{$dat.id},{$dat.status})">正常</a>
+					{/if}
+				</td>
+				
+				
+				<td><a href='javascript:;' data-toggle="modal" data-target="#edit" class='btn update' onclick='find({$dat.id})'>修改</a></td>
+				
+				<!-- <td><a href="javascript:;" class='del btn btn-sm' onclick="del({$dat.id},this)">删除</a></td> -->
+				<td><a href='javascript:;' data-toggle="modal" data-target="#usedel1"  class='del btn btn-sm'onclick='find1({$dat.id})'>删除</a></td>
+				
+			</tr>
+			{/volist}
+		</table>
+		
+				
+	</div>
+    <div class="panel-footer">
+    	{$page}
+    </div>
+</div>
+
+<!-- 添加 -->
+<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h2 class="modal-title" id="myModalLabel">添加用户</h2>
+
+			</div>
+			<div class="modal-body">
+				<!-- form禁用 -->
+				<form onsubmit="return false" id="addForm">
+					<div class="form-group">
+						<label for="">用户名称</label>
+						<input type="text" class="form-control" name="username">
+					</div>
+					<div class="form-group">
+						<label for="">用户密码</label>
+						<input type="password" class="form-control" name="password">
+					</div>
+					
+					
+					<div class="form-group">
+						<div class="radio">
+							<label>
+								<input type="radio" name="status" id="" value="1" checked>
+								正常
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="status" id="" value="0" >
+								禁用
+							</label>
+						</div>
+					</div>
+					
+
+					<button class='btn btn-info' onclick="add()">提交</button>
+	                <button type="reset" class='btn btn-danger' data-dismiss='modal'>重置</button>
+				</form>	
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 修改-->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h2 class="modal-title" id="myModalLabel">修改用户</h2>
+			</div>
+			<div class="modal-body">
+				<form onsubmit="return false" id="editForm">
+					
+				</form>	
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 删除 -->
+<!-- 删除 -->
+<div class="modal fade" id="usedel1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					
+					
+				</div>
+				<div class="modal-body">
+					<form onsubmit="return false" id="delForm">
+						
+						
+					</form>
+				</div>
+				
+			</div>
+		</div>
+</div>
+<script>
+	// 添加
+	function add(){
+		// 序列化
+		str=$('#addForm').serialize();
+        // alert(str);
+		$.post('{:url("ajax_add")}',{str:str},function(data){
+			if(data.code==0){
+                alert(data.info);
+			}
+			if(data.code==1){
+	            $('.table').append(data.info);
+				$('.close').click();
+				tot=parseInt($('#tot').html());
+				$('#tot').html(++tot);
+			}
+			if(data.code==2){
+                  alert(data.info);
+			}
+		},'json')	
+	}
+// 删除
+	// function del(id,obj){
+		
+	// 	$.post('{:url("ajax_del")}',{id:id},function(data){
+	// 		if(data==1){
+	// 			$(obj).parent().parent().hide();
+	// 			tot=parseInt($('#tot').html());
+	// 			$('#tot').html(--tot);
+	// 			$('.close').click();
+	// 			// window.location.reload();
+	// 		}else{
+	// 			alert('删除失败');
+	// 		}
+	// 	})	
+	// }
+
+	  function find1(id){
+		$.post('{:url("ajax_find1")}',{id:id},function(data){
+			$('#delForm').html(data);
+		})
+
+	}
+	
+ 	// 删除
+	function del(id){
+		str=$('#delForm').serialize();
+		$.post('{:url("ajax_del")}',{str:str},function(data){
+			if(data==1){
+				$('#tr'+id).hide();
+				tot=parseInt($('#tot').html());
+				$('#tot').html(--tot);			
+				$('.close').click();
+			}else{
+				alert('删除失败');
+			}
+		});
+		
+	}
+
+
+ 	// 查找
+    function find(id){
+    	$.post('{:url("ajax_find")}',{id:id},function(data){
+    		$('#editForm').html(data);
+    	})
+    }
+ // 修改
+ 	function edit(id){
+ 		// 序列化
+		str=$('#editForm').serialize();
+ 		$.post('{:url("ajax_edit")}',{str:str},function(data){
+ 			$('#tr'+id).html(data);
+ 			$('.close').click();
+    	})
+ 	}
+ 	// 批量选中
+ 	$('#checkAll').click(function(){
+ 		$('.check').click();
+ 	});
+ 	function delAll(){
+ 		
+        
+ 		datas=$('.check:checked');
+		arr=new Array();
+		for(i=0;i<datas.length;i++){
+			arr[i]=datas.eq(i).val();
+		}
+		
+		// 转字符串
+		str=arr.join(',',arr);
+		$.post('{:url("ajax_delAll")}',{str:str},function(data){
+			if(arr.length==data){
+				for(i=0;i<datas.length;i++){
+					$('#tr'+arr[i]).remove();
+					tot=parseInt($('#tot').html());
+				    $('#tot').html(--tot);
+				}
+			}
+		})
+ 	}
+ 	// 状态
+ 	function status(obj,id,val){
+        if(val){
+           $.post("{:url('ajax_status')}",{id:id,status:0},function(data){
+	           	if(data){
+					$(obj).html('禁用');
+					$(obj).attr({'class':'btn btn-danger'});
+					$(obj).attr({'onclick':'status(this,'+id+',0)'});
+				}
+           })
+        }else{
+        	$.post("{:url('ajax_status')}",{id:id,status:1},function(data){
+				if(data){
+					$(obj).html('正常');
+					$(obj).attr({'class':'btn btn-rimary'});
+					$(obj).attr({'onclick':'status(this,'+id+',1)'});
+				}
+		  })
+        }
+ 	}
+
+ 	
+
+</script>
+

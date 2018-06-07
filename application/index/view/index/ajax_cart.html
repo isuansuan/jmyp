@@ -1,0 +1,40 @@
+
+ {volist name="$data" id='dat'}
+	<li class="ibar_cart_item  clearfix">
+		<div class="ibar_cart_item_pic">
+			<a href=''>
+				<img src="__STATIC__/upload/shop/{$dat.simg}">
+			</a>
+		</div>
+		<div class="ibar_cart_item_desc">
+			<span class="ibar_cart_item_name_wrapper">
+				<a class="ibar_cart_item_name" target="_blank" title="中国•一叶子酪梨沁透水润套组（酪梨水漾保湿洁面乳80g+酪梨水漾保湿爽肤水120ml+酪梨水漾保湿乳100ml+嫩刺梨倍润补水面膜25ml*5+保湿洁面乳15g+保湿爽肤水15ml+保湿乳15ml）" href="">{$dat.contact}</a>
+			</span>
+			<div class="ibar_cart_item_price ibar_pink">
+				<span class="unit_price">￥<em>{$dat.price}</em></span>
+				<span class="unit_plus"> x </span>
+				<span class="ibar_cart_item_count"><em>{$dat.num}</em></span>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+	</li>
+
+
+ {/volist}
+<li class="clear"></li>
+<script>
+   tot=0;
+   $('.ibar_cart_item_count').each(function(){
+   	tot+= parseInt( $(this).find('em').html());
+   })
+   $('.tot em').html(tot);
+   
+	sum=0;
+	$('.unit_price').each(function(){
+		sum+= parseInt( $(this).find('em').html());
+		
+	})
+	
+	$('.sum em').html(sum);
+</script>

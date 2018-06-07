@@ -1,0 +1,437 @@
+{layout name='layout'/}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>结算</title>
+	<link rel='stylesheet' href='__STATIC__/index/css/index.css'>
+	
+    <link rel="stylesheet" href="__STATIC__/index/css/carts.css">
+	<script src='__STATIC__/index/js/jquery.min.js'></script>
+	
+</head>
+<body style="background:#fff;">
+	
+	<div class="cart_header_box">
+		<div class="cart_header clearfix">
+			<div class="logo_box">
+				<div class="logo">
+					<a href='{:url('Index/index')}'><img src='__STATIC__/index/img/cart_logo.jpg'></a>
+				</div>
+			</div>
+			<div class="order_path order_path_2"></div>
+		    <div class="clear"></div>
+		</div>
+
+	</div>
+
+	<form action="{:url('Js/order')}"   method="post" >
+	    <div class="cart-main cart-thead" style="width:960px;margin:0 auto;">
+	                      
+	            <div class="floorsBottom cartfloorbottom">
+	                <h2 class="title">地址选择</h2>
+	                 
+	                <div class="address" >
+ 
+                    {volist name='hdata' id='fdat'}
+	                    
+                       
+
+	                    
+	                    <div class="address_list" style="display:inline-block;float:left;margin-right:10px;">
+	                    	
+	                        <input type="radio"  name='id' class="check" value="{$fdat.id}" style="display:none;">
+	                       <!--  <input type="hidden"  name='aid' class="check" value="{$fdat.id}"> -->
+	                        <div class="address_box JS_address_list">
+	                            <div class="name" style="width:140px;" name="name">{$fdat.name}</div>
+	                            <div class="detaile" name="addr">{$fdat.addr}</div>
+	                            <div class="number_phone" name="tel">{$fdat.tel}</div>
+	                        </div>
+	                        <div class="clear"></div>
+	                    </div>
+	                    {/volist}
+	                    <div class="address-operation">
+	                        <div class="address_express">
+	                            <!-- <div class="fl"><a href="javascript:" class="add"><i class="icon">+</i><span>使用新地址</span></a>
+	                            </div> -->
+	                            <li class="order-address-checkbox ">
+									<div class="order-add-icon btnt">
+									  	
+									</div>
+									<div class="order-address-add-text btnt">添加新地址</div>
+	
+	                                
+								</li>
+								  <div class="clear"></div>
+	                        </div>
+	                        <div class="clear"></div>
+	                    </div> 
+
+	                    <div class="clear"></div> 
+	                 
+	                </div>
+	                <div class="clear"></div>
+	                <h2 class="title">商品清单</h2>
+	            </div>
+	            
+	    </div>
+	   
+	    
+	   
+
+	    <section  class="cartMain container">
+	        <div class="group_show">
+	            <div class="cartMain_hd">
+	                <ul class="order_lists cartTop">
+	                    <!--所有商品全选-->
+	                    <li class="list_chk cart_group_header">
+	                        
+	                        
+	                        
+	                        <h2>  聚美优品发货  </h2>
+	                    </li>
+	                    
+	                    <li class="list_price">聚美价（元）</li>
+	                    <li class="list_amount">数量</li>
+	                    <li class="list_sum">小计</li>
+	                    <li class="list_op">操作</li>
+	                </ul>
+	            </div>
+
+	            <div class="cartBox">
+
+	                <div class="order_content">
+	                    {volist name="aar" id='dat'}
+	                    <ul class="order_lists">
+	                        <li class="cart_item_desc list_chk ">
+	                            
+	                            <div class="cart_item_desc_wrapper">
+	                                <a href='' class='cart_item_pic' name='simg'>
+	                                    <img src='__STATIC__/upload/shop/{$dat.simg}'>
+	                                </a>
+	                                <input type="hidden"  name='sid[]' class="check" value="{$dat.id}">
+	                                <a class='cart_item_link' href='' name='contact'>{$dat.contact}</a>
+	                                <a class='cart_item_link' name="stock"style="color:red;font-size:14px;"href=''>库存{$dat.stock}</a>
+	                                <!-- <p class="sku_info">
+	                                   容量：<span class="cart_item_capacity">120g+130ml+100ml+50g</span>   
+	                                </p> -->
+	                            </div>
+	                        </li>
+	                        
+	                        
+	                        <li class="cart_item_price list_price ">
+	                            <p class="price" name="price">￥{$dat.price}</p>  
+	                            <p class="market_price ">￥265.00</p>
+	                        </li>
+	                        <li class="cart_item_num list_amount ">
+	                            <div class="amount_box">
+	                                
+	                                
+	                              <em>  {$dat.num}</em>
+	                            </div>
+	                            <input type="hidden"  name='num[]' class="check" value="{$dat.num}">
+	                        </li>
+	                        <li class="cart_item_total list_sum ">
+	                            
+	                            <!-- <div class="cart_item_total">  -->
+	                                <p class="sum_price" name='sprice'>￥{$dat.price*$dat.num}</p>  
+	                                 
+	                            <!-- </div>  -->
+	                        </li>
+	                        <li class="cart_item_option list_op ">
+	                            <div class="cart_item_option"> 
+	                                <a class="icon_small delete_item png delBtn"  href="javascript:;" title="删除"></a>
+	                                 <!-- {:url('del',array('id'=>$dat.id))} -->
+	                            </div> 
+	                        </li>
+	                    </ul>
+	                   
+	                   
+	                     {/volist}
+	                </div>
+	            </div>
+	            
+	            
+
+	        </div>
+	        <!--底部-->
+		        <div class="bar-wrapper"style="width:960px;margin:0 auto;">
+		            <div class="bar-right">
+		                <div class="piece">已选商品<strong class="piece_num tot"><em></em></strong>件</div>
+		                <div class="totalMoney">共计: <strong class="total_text">￥{$dat.sum}</strong></div>
+		                <div class="calBtn">
+		                	<input type="hidden"  name='aid' class="checkIn" value="">
+		                	<button id="xiadan"class="btn btn-default" type="submit" style="    display: block;width: 120px;height: 50px;color: #fff;cursor:pointer;font-size: 22px;letter-spacing: 5px;text-decoration: none;line-height: 50px;text-align: center;border-radius: 2px;border:none">下单</button>
+
+		                </div>
+		                
+		            </div>
+		            <li class="list_chk cart_group_header">
+		                    <!--所有商品全选-->
+		               
+		               
+		                <a class="go_back_shopping" href="{:url('Cart/index')}" style="font-size:18px;color:#000;font-weight:700">返回购物车</a>
+		                
+		            </li>
+
+		            
+	            </div>
+	           
+	    </section>
+    </form>
+     <section class="model_bg zengjia" style="display:none;">
+		<div class='my_models'>
+    		<h2 style="display:inline-block;">使用新地址</h2>
+            <a class="closeModel" style="float:right;font-size:21px;cursor:pointer;">×</a>
+			<form class='shipping_address' action='javascript:;' method='post' id="zengjia">
+				<div class="input_container">
+					<a for="recipient_name" style="padding-right:8px;">
+						<span class="spark">*</span>收件人姓名：
+					</a>
+					<input type="text"  class="t_input recipient_name auth" id="recipient_name" name="name" value="">
+					<div class="focus_text"style="display:none;padding-left:105px;">
+	    				<p class="default" >请输入姓名</p>
+	    			</div>
+	    			<div class="invalid"style="display:none;padding-left:105px;">
+                        <i></i>
+                        <div class="msg">姓名不能为空</div>
+                    </div>
+                </div>
+                <div class="input_container">
+                	<a for="select_province"style="padding-right:20px;">
+                		<span class="spark">*</span>收货地址：
+                	</a>
+                	<p style="display:inline-block;">
+						
+						<select class='select_text_ui' name="pid" id="province">
+							<option value=""><a href=''>省/直辖市</a></option>
+							
+							 
+							 
+							 {volist name="sdata" id='dat'}
+							 
+							 <option value="{$dat.ProvinceID}" >{$dat.ProvinceName}</option>
+							 {/volist}
+						</select>
+						
+						<select class='select_text_ui' name="cid" id="city">
+							<option   value=""><a href=''>市</a></option>
+							
+						</select>
+						
+						<select class='select_text_ui' name="qid" id="district">
+							<option value="">区/县</option>
+						</select>
+					</p>
+                </div>
+                <div class="input_container">
+					<a for="recipient_street"style="padding-right:20px;">
+						<span class="spark">*</span>详细地址：
+					</a>
+					<textarea rows="3" cols="60" class="t_input recipient_street auth"  id="recipient_street" name="addx"style="display:inline-block;width:376px;"></textarea>
+					<div class="focus_text"style="display:none;padding-left:105px;">请填写详细的地址</div>
+	    			<div class="invalid"style="display:none;padding-left:105px;">
+                        <i></i>
+                        <div class="msg">详细地址不能为空</div>
+                    </div>
+				</div>
+				<div class="input_container">
+					<a for="recipient_hp"style="padding-right:20px;">
+						<span class="spark">*</span>手机号码：
+					</a>
+					<input type="tel"  class="t_input recipient_hp auth" id="recipient_hp" name="tel" value="" maxlength="11">
+					<div class="focus_text"style="display:none;padding-left:105px;">请输入11位手机号</div>
+	    			<div class="invalid"style="display:none;padding-left:105px;">
+                        <i></i>
+                        <div class="msg">手机号格式有误</div>
+                    </div>
+				</div>
+                
+
+				<div class="act">
+					<input type="button" value="保存收货地址"  id="shipping_address_submit" class="formbutton">
+				</div>
+
+			</form>
+    	</div>
+    </section>   
+    
+   
+	
+   
+    
+</body>
+
+<!-- <script src="__STATIC__/index/js/carts.js"></script> -->
+<script src='__STATIC__/index/js/index.js'></script>
+
+<script src='__STATIC__/index/js/setinterval.js'></script>
+<script>
+
+$('.btnt').click(function(){
+	$('.zengjia').show();
+
+});
+// 默认选中
+
+
+$(".address_list").click(function(){
+    $('.address_box').removeClass('active');
+    $(this).find('.address_box').addClass('active');
+    s=$(this).find('input').val();
+    // 判断选中的地址
+    $('.check').prop('checked',false);
+    $(this).find('.check').prop('checked',true);
+    // 未选择地址
+     add=$(this).find('.check').val();
+    ad=$('.checkIn').val(add);
+    // $("#a").val(s);
+    
+});
+$(".address_list").eq(0).click();
+ $("#xiadan").click(function(){
+    $('#formm').submit();
+ });
+
+
+ tot=0;
+   $('.amount_box').each(function(){
+   	tot+= parseInt( $(this).find('em').html());
+   })
+   $('.tot em').html(tot);
+
+   
+$('.closeModel').click(function(){
+	$('.zengjia').hide();
+});
+	
+
+ // 市
+ 	$(document).on('change','#province',function(){
+ 		pid=$(this).val();
+ 		$.post('{:url("ajax_getCity")}',{pid:pid},function(data){
+ 			// $('#city').html(" ").append(data);
+ 			$('#city').html(data);
+ 		});
+ 	});
+
+ 	
+ 	// 区
+ 	$(document).on('change','#city',function(){
+ 		cid=$(this).val();
+ 		// function 返回来得值
+ 		$.post('{:url("ajax_getDistrict")}',{cid:cid},function(data){
+ 			// $('#district').html(" ").append(data);
+ 			$('#district').html(data);
+ 		});
+ 	});
+$('input[name=tel]').focus(function(){
+	tel=$(this).val();
+	
+    
+    $(this).next().show();
+    $(this).next().next().hide();
+	
+	$(this).css({'box-shadow':'0 0 4px 1px #A5D4ED','border-color':'#A5D4ED'});
+});
+
+$('input[name=tel]').blur(function(){
+	tel=$(this).val();
+
+	if(!tel.match(/^1[34578]\d{9}$/i)){
+		// $('this i').show();
+        $(this).next().hide();
+
+		$(this).next().next().show();
+		$(this).data({'s':0});
+		$(this).css({'box-shadow':'0 0 4px 1px rgba(228,36,36,0.6)','border-color':'#E24A4A'});
+	}else{
+		$(this).next().hide();
+		$(this).data({'s':1});
+
+		$(this).css({'box-shadow':'none','border-color':'#CFCFCF'});
+
+	}
+	
+});
+$('#recipient_street').focus(function(){
+	
+	addx=$(this).val();
+	addxobj=$(this);
+    
+    $(this).next().show();
+     $(this).next().next().hide();
+	
+	$(this).css({'box-shadow':'0 0 4px 1px #A5D4ED','border-color':'#A5D4ED'});
+});
+
+$('#recipient_street').blur(function(){
+	addx=$(this).val();
+	addxobj=$(this);
+    if(addx.length<1){
+		// $('this i').show();
+        $(this).next().hide();
+
+		$(this).next().next().show();
+		$(this).data({'s':0});
+		$(this).css({'box-shadow':'0 0 4px 1px rgba(228,36,36,0.6)','border-color':'#E24A4A'});
+	}else{
+
+		$(this).next().hide();
+		$(this).data({'s':1});
+		$(this).css({'box-shadow':'none','border-color':'#CFCFCF'});
+
+	}
+});
+$('input[name=name]').focus(function(){
+	username=$(this).val();
+	userobj=$(this);
+    
+    $(this).next().show();
+     $(this).next().next().hide();
+	
+	$(this).css({'box-shadow':'0 0 4px 1px #A5D4ED','border-color':'#A5D4ED'});
+});
+
+$('input[name=name]').blur(function(){
+	username=$(this).val();
+	userobj=$(this);
+    if(username.length<1){
+		// $('this i').show();
+        $(this).next().hide();
+
+		$(this).next().next().show();
+		$(this).data({'s':0});
+		$(this).css({'box-shadow':'0 0 4px 1px rgba(228,36,36,0.6)','border-color':'#E24A4A'});
+	}else{
+		$(this).next().hide();
+		$(this).data({'s':1});
+		$(this).css({'box-shadow':'none','border-color':'#CFCFCF'});
+
+	}
+});
+$('.formbutton').click(function(){
+
+	$('.auth').blur();
+	tot=0;
+	$('.auth').each(function(){
+		tot+=$(this).data('s');
+		
+	});
+	if(tot>=3){
+		str=$('#zengjia').serialize();
+			
+		$.post('{:url("ajax_add")}',{str:str},function(a){
+			if(a.code==1){
+				
+						window.location.reload();
+					}
+					// 如果传过来的code值等于2，则打印出控制器中设置的错误值
+					if(a.code==2){
+						alert(a.info);
+					}
+				},'json')
+		
+	}
+});
+ </script>

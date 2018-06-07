@@ -1,0 +1,339 @@
+{layout name='layout'/}
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人中心</title>
+	<link rel='stylesheet' href='__STATIC__/index/css/index.css'>
+	<script src='__STATIC__/index/js/jquery.min.js'></script>
+</head>
+<body>
+	
+<!-- logo 搜索 cart -->
+	<div class='header'>
+		<div class='header_center'>
+			<h1 class='logo'>
+				<a href='{:url('Index/index')}' id='home'></a>
+			</h1>
+			<div class='header_searchbox header_out_searchbox'>
+				<form action='http://search.jumei.com' method='get'>
+					<input type='text' name='search' class='header_search_input' id='header_search_input'>
+					<button type='submit' class='header_search_btn'>搜索</button>
+				</form>
+				<div class='search_result_pop_a' id='top_out_search_pop_div'></div>
+			    <ul class='hot_word'>
+			    	<li><a href=''>保湿</a><s class='line'></s></li>
+			    	<li><a href=''>面膜</a><s class='line'></s></li>
+			    	<li><a href=''>洗面奶</a><s class='line'></s></li>
+			    	<li><a href=''>补水</a><s class='line'></s></li>
+			    	<li><a href=''>香水</a><s class='line'></s></li>
+			    	<li><a href=''>眼霜</a><s class='line'></s></li>
+			    	<li><a href=''>口红</a><s class='line'></s></li>
+			    	<li><a href=''>护肤套装</a><s class='line'></s></li>
+			    	<li><a href=''>BB霜</a></li>
+
+			    </ul>
+			</div>
+		    <div id='cart_box' class='cart_box'>
+		    	<a id='cart' class='cart_link' href=''>
+		    		<img src='__STATIC__/index/img/cart.gif' class='cart_gif'>
+		    		<span class='text'>去购物车结算</span>
+		    		<span class='num'></span>
+		    		<s class='icon_arrow_right'></s>
+		    	</a>
+		    </div>
+	    </div>
+	</div>
+<!-- 导航条 -->	
+	<div class='header_bottom'>
+		<div class='channel_nav_box'>
+			<div class='channel_nav_list_wrap'>
+				<ul class='channel_nav_list'>
+					<li class='currentn'>
+						<a href='' class='home'>首页</a>
+					</li>
+					<li>
+						<a href=''>极速免税店</a>
+					</li>
+					<li>
+						<a href=''>母婴特卖</a>
+					</li>
+					<li class='meizhuang'>
+						<a href='' class='mei'>美妆商城<s></s></a>
+						<!-- <div class='header_pop_subAtc box-shadow' id='header_pop_subAct'>
+					        <div class='mz_imglist'>
+								<a href=''><img src='__STATIC__/index/img/30573_254_135_003-web.jpg'></a>
+								<a href=''><img src='__STATIC__/index/img/30573_254_135_005-web.jpg'></a>	
+						
+					        </div>
+					        <div class='mz_inner clearfix'>
+								<dl class='mz1'>
+									<dt class='item_int png'><a>国际大牌</a></dt>
+									<dd><a href=''>兰蔻</a></dd>
+									<dd><a href=''>娇韵诗</a></dd>
+									<dd><a href=''>伊丽莎白雅顿</a></dd>
+									<dd><a href=''>雅诗兰黛</a></dd>
+									<dd><a href=''>欧莱雅</a></dd>
+									<dd><a href=''>兰芝</a></dd>
+									<dd><a href=''>倩碧</a></dd>
+									<dd><a href=''>SK-ll</a></dd>
+									<dd><a href=''>雅漾</a></dd>
+									<dd><a href=''>菲诗小铺</a></dd>
+									<dd><a href=''>悦诗风吟</a></dd>
+								</dl>
+								<dl>
+									<dt class='item_hufu png'><a>护肤</a></dt>
+									<dd><a href=''>洁面</a></dd>
+									<dd><a href=''>爽肤水</a></dd>
+									<dd><a href=''>精华</a></dd>
+									<dd><a href=''>乳液</a></dd>
+									<dd><a href=''>面霜</a></dd>
+									<dd><a href=''>眼霜</a></dd>
+									<dd><a href=''>面膜</a></dd>
+									<dd><a href=''>护肤套装</a></dd>
+									
+								</dl>
+								<dl>
+									<dt class='item_caizhuang png'><a>彩妆</a></dt>
+									<dd><a href=''>卸妆</a></dd>
+									<dd><a href=''>BB霜</a></dd>
+									<dd><a href=''>粉底液</a></dd>
+									<dd><a href=''>粉饼</a></dd>
+									<dd><a href=''>眼影</a></dd>
+									<dd><a href=''>眼线笔</a></dd>
+									<dd><a href=''>睫毛膏</a></dd>
+									<dd><a href=''>眉笔</a></dd>
+									<dd><a href=''>口红</a></dd>
+									<dd><a href=''>腮红</a></dd>
+									
+								</dl>
+								<dl class='mz4'>
+									<dt class='item_xiangfen png'><a>香氛</a></dt>
+									<dd><a href=''>女士香水</a></dd>
+									<dd><a href=''>男士香水</a></dd>
+									<dd><a href=''>中性香水</a></dd>
+									<dd><a href=''>Q版香水</a></dd>
+									<dd><a href=''>香水套装</a></dd>
+									<dd><a href=''>精油</a></dd>
+									
+								</dl>
+								<dl class='mz5'>
+									<dt class='item_nanshi png'><a>男士专区</a></dt>
+									<dd><a href=''>洁面</a></dd>
+									<dd><a href=''>爽肤水</a></dd>
+									<dd><a href=''>面霜</a></dd>
+									<dd><a href=''>精华</a></dd>
+									<dd><a href=''>护肤套装</a></dd>
+									<dd><a href=''>洗发</a></dd>
+									<dd><a href=''>沐浴</a></dd>
+									
+								</dl>
+								<dl class='mz6'>
+									<dt class='item_hot png'><a>热门搜索</a></dt>
+									<dd><a href=''>面膜贴</a></dd>
+									<dd><a href=''>洗面奶</a></dd>
+									<dd><a href=''>唇膏</a></dd>
+									<dd><a href=''>去黑头</a></dd>
+									<dd><a href=''>怯斑</a></dd>
+									<dd><a href=''>隔离</a></dd>
+									<dd><a href=''>祛痘</a></dd>
+									<dd><a href=''>去角质</a></dd>
+									<dd><a href=''>指甲油</a></dd>
+									
+								</dl>
+					        </div>
+				        </div> -->
+					</li>
+					<li>
+						<a href=''>国际轻奢</a>
+					</li>
+					<li>
+						<a href=''>服装运动</a>
+					</li>
+					<li>
+						<a href=''>鞋包配饰</a>
+					</li>
+				</ul>
+				
+			    <ul id='icon_wrap' class='icon_wrap'>
+			    	<li>
+			    		<a href=''><span></span></a>
+			    	</li>
+			    	<li>
+			    		<a href=''><span class='th'></span></a>
+			    	</li>
+			    	<li>
+			    		<a href=''><span class='by'></span></a>
+			    	</li>
+			    </ul>
+			</div>
+		</div>
+	</div>
+<!-- 内容 -->	
+    <div class="profile">
+     	<div class="nav">
+     		<div class="notice">
+     			{volist name='data' id='dat'}{/volist}
+     		{if condition="$data"}
+     			{if condition="$dat.img"}
+     			<a href='' class='img'><img src='__STATIC__/upload/user/{$dat.img}'></a>
+                {else/}  
+                <a href='' class='img'><img src='__STATIC__/index/img/284241596-64-15173983821.jpg'></a>  
+     			
+     			{/if}
+     		{else /}  
+	                 <a href='' class='img'><img src='__STATIC__/index/img/284241596-64-15173983821.jpg'></a> 
+             	 {/if}	
+     			<p class='nickname'>
+     				<a href=''>JM180BNEN9073</a>
+     			</p>
+     			<p class='nick'><a href=''>普通会员</a></p>
+     			<p class="uid">用户ID: 284241596</p>
+
+     		</div>
+     		<h2><b></b>我的聚美优品</h2>
+     		<a href="{:url('Person/index')}" class="list selected"><b></b>我的订单</a>
+     		<a href="{:url('Person/mycomm')}" class="wish"><b></b>评价晒单</a>
+     		<a href="{:url('Person/collect')}" class="fav"><b></b>我的收藏</a>
+     		<!-- <a href="{:url('Person/comment')}" class="fav"><b></b>我的评价</a> -->
+     		<a href="{:url('Person/order')}" class="fav"><b></b>订单详情</a>
+     		<h2><b></b>管理个人账户</h2>
+     		<a href="{:url('Person/add')}" class="addr"><b></b>管理收货地址</a>
+     		<a href="{:url('Person/uppass')}" class="bind"><b></b>修改密码</a>
+     		<a href="{:url('Person/mess')}" class="settings"><b></b>设置账户信息</a>
+     	</div>
+     	
+        <h1 class='rightb'>我的收藏</h1>
+	    <div class="content myfav">
+			<div class="notice_content">
+				收藏心仪的产品或品牌，方便你随时找到它们，也有助于根据你的收藏给你更加贴心的推荐
+			</div>
+			<div class="filter">
+				<a href="http://i.jumei.com/i/product/fav_products" class="curr">我收藏的产品</a>
+				<a href="http://i.jumei.com/i/product/fav_brands">我收藏的品牌</a>
+				<div class="clear"></div>
+			</div>
+			<div id="fav_product_list">
+				<!--收藏列表-->
+				<div class="fav_product_container faved">
+					
+					<div class="fav_product_list">
+						<ul>
+							<!--deal-->
+							
+							<!--deal-->
+							{volist name='data1' id='dat'}
+							<li class="fav_mall" style="border: 3px solid rgb(255, 255, 255);">
+								<a href="http://item.jumei.com/28490.html?from=fav_product" class="img_wrap" target="_blank">
+								<img src="__STATIC__/upload/shop/{$dat.simg}" style="width:200px;height:200px;">
+								<!--已下架-->
+								</a>
+								<p class="pro_tit">
+									<a title="中国•温碧泉(WETHERM)八杯水套装(洁面乳120g+保湿水130ml+嫩肤乳100ml+嫩肤霜50g 赠 多元亮采修护眼霜5ml)" href="http://item.jumei.com/28490.html?from=fav_product" target="_blank">
+			                        {$dat.contact}                               
+									</a>
+								</p>
+								<a class="pro_price " href="http://item.jumei.com/28490.html?from=fav_product" target="_blank">
+								<strong><span>¥</span>{$dat.price}</strong>
+								<label>商城在售</label>
+								</a>
+								<p class="p_like" style="display: none;">
+									<a class="btnlike liked">
+									<span class="ilike_text">已收藏</span>
+									<span style="color: #999;">(<span class="ilike_num">{$dat.sales}</span>)</span>
+									</a>
+									<a class="btnunlike" href="javascript:;" pid="28490">取消收藏</a>
+								</p>
+							</li>
+							{/volist}
+						</ul>
+						<div class="clear">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	    <div class="null_info">
+	        <h2>
+	           
+	        </h2>
+	    </div>
+	    <a href="javascript:;" class="backtotop" id='btn_gotop' style="margin-left:1099px;"><b></b>回到顶部</a>
+		
+	   <div class="clear"></div>	
+    </div>
+    
+</body>
+<script src='__STATIC__/index/js/index.js'></script>
+<script src='__STATIC__/index/js/setinterval.js'></script>
+ <script>
+ $('.fav_mall').mouseenter(function(){
+ 	
+ 	 $(this).find('.p_like').show();
+ 	 $(this).css({'border':'3px solid rgb(251, 208, 223)'});
+ });
+ $('.fav_mall').mouseleave(function(){
+ 	
+ 	 $(this).find('.p_like').hide();
+ 	 $(this).css({'border':'3px solid #fff'});
+ });
+
+ window.onload = function(){
+          var obtn = document.getElementById('btn_gotop');
+          
+         //获取页面可视区的高度
+         var pageH = document.documentElement.clientHeight;
+         var timer = null;
+         var need2Top = true;//用于当向上回到顶部的时候 需要向下拖动滚轮了
+
+
+        window.onscroll=function(){
+            var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+            //console.log(osTop);
+            if (osTop >= pageH){
+                  obtn.style.display = "block";//显示按钮
+            }else {
+               obtn.style.display = "none";//隐藏按钮
+            }
+        
+            
+            
+      
+            // if(osTop>=6700 && osTop<=10500){
+            //    $('.nav_today_deals a').css({'background-position': '-176px -124px','color':'#fff'});
+            //    $('.nav_cosmetics_floor a').css({'color':'#8f8f8f','background':'url("img/pc_new.jpg") #fff no-repeat 0 -186px'});
+            // }
+            //向上回到顶部的时候 需要向下拖动滚轮
+            //? 如何在向上时 禁止滚轮使用
+            if(!need2Top){
+               clearInterval(timer);
+            }
+            need2Top = false;
+            
+        }//end onscrooll
+
+         //bind 点击按钮事件
+        obtn.onclick=function(){
+            //设置定时间，给回到顶部做一个缓冲运动，show 2 fast
+            timer = setInterval(function(){
+               
+               //获取当前页面滚轮高度 && 设置速度
+               var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+                  ispeed = Math.floor(-osTop/6);//不为负数时 5/6 除不尽
+               //设置当前滚轮高度
+               document.documentElement.scrollTop = document.body.scrollTop = osTop+ispeed;//--
+               need2Top = true;
+               //到达顶部 清空定时器
+               if(osTop==0){
+                  clearInterval(timer);
+               }
+            },30);
+        }//end onclick    
+} 	
+
+ </script>
+</html>
+	
+
+    
